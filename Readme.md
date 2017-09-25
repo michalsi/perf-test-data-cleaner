@@ -1,4 +1,4 @@
-# Performance Test Data Processor
+# Performance Tests Data Processor
 
 ## Purpouse
 
