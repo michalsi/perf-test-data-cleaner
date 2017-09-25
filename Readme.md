@@ -27,4 +27,4 @@ Paths to data files to process stored in `input_files.json`
 
 - Saves original files in separate files
 - Determines separate test machines based on hostname pattern
-- When data file is not found only warning is outputted to the user. Scripts continues execution
+- When data file is not found only warning is outputted to the user. Script continues execution
