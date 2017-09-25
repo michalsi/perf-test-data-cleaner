@@ -1,0 +1,11 @@
+{
+	"files_to_shuffle" : [
+		"case_search_input.csv",
+    "case_search_input_1.csv",
+    "case_search_input_not_exists.csv"
+	],
+	"files_to_split" : [
+		"admin_logins.csv",
+    "admin_logins_not_exists.csv"
+	]
+}
