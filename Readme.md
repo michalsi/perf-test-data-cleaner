@@ -12,9 +12,9 @@ Issues might arise when test data is not correctly shared between separate slave
 E.g. it might not be desirable to reuse the same login on different machine. 
 Or you can reuse the same set of test data but you'd like to have different _random_ order on each machine.
 
-This small tool is meant to handle those two types of issues: 
+This small tool is meant to handle two types of issues: 
 
-- protection between reusing test data across different test nodes 
+- protection between reusing test data across different load generation nodes 
 - test data randomisation for each node
  
 ## Usage
