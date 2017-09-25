@@ -20,6 +20,8 @@ This small tool is meant to handle those two types of issues:
 ## Usage
 
     python process_input_data.py
+    
+Paths to data files to process stored in `input_files.json`
 
 ### Additioanal information
 
