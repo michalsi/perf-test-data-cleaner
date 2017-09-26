@@ -8,7 +8,7 @@ import platform
 
 input_files_list = 'input_files.json'
 number_of_slaves = 4
-remote_machine_pattern = 'cpp-test(\\d{2})'
+remote_machine_name_pattern = 'cpp-test(\\d{2})'
 
 
 class ProcessInputData(object):
@@ -36,7 +36,7 @@ def shuffle_lines_in_file(filename):
         logging.warning("Could not open {} file".format(filename))
 
 def process_file_for_part_extraction(filename):
-    part_number_to_extract = get_number_of_remote_machine()
+    part_number_to_extract = get_remote_machine_index()
     if part_number_to_extract:
         try:
             archive_file(filename)
@@ -68,9 +68,9 @@ def extract_part_from_file(part_number, filename):
     logging.info("Extracted part number {0} of {1} file".format(int(part_number), filename))
 
 
-def get_number_of_remote_machine():
+def get_remote_machine_index():
     machine_name = platform.node()
-    pattern = remote_machine_pattern
+    pattern = remote_machine_name_pattern
     m = re.search(pattern, machine_name)
     if m:
         found = m.group(1)
