@@ -21,7 +21,7 @@ This small tool is meant to handle two types of issues:
 
     python process_input_data.py
     
-Paths to data files to process stored in `input_files.json`
+Paths to data files to process are stored in `input_files.json`
 
 ### Additioanal information
 
