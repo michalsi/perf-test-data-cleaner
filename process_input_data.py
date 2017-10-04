@@ -4,12 +4,13 @@ import logging
 import math
 import re
 import platform
+import os
 
 
 input_files_list = 'input_files.json'
 number_of_slaves = 4
 remote_machine_name_pattern = 'cpp-test(\\d{2})'
-
+base_dir = os.path.dirname(__file__) + "/"
 
 class ProcessInputData(object):
 
@@ -21,10 +22,14 @@ class ProcessInputData(object):
         with open(input_files_list) as input_files:
             files_to_process = json.load(input_files)
         for filename in files_to_process['files_to_shuffle']:
-            shuffle_lines_in_file(filename)
+            file_path = base_dir  + filename
+            shuffle_lines_in_file(file_path)
         for filename in files_to_process['files_to_split']:
-            process_file_for_part_extraction(filename)
+            file_path = base_dir  + filename
+            process_file_for_part_extraction(file_path)
 
+def normalize_path(filename):
+    return base_dir + base_dir
 
 def shuffle_lines_in_file(filename):
     try:
@@ -32,9 +37,9 @@ def shuffle_lines_in_file(filename):
         lines = open(filename).readlines()
         random.shuffle(lines)
         open(filename, 'wb').writelines(lines)
-        logging.info("Lines in {} file has been randomly shuffled".format(filename))
+        logging.info("Lines in {0} file has been randomly shuffled".format(filename))
     except IOError:
-        logging.warning("Could not open {} file".format(filename))
+        logging.warning("Could not open {0} file".format(filename))
 
 def process_file_for_part_extraction(filename):
     part_number_to_extract = get_remote_machine_index()
@@ -43,9 +48,9 @@ def process_file_for_part_extraction(filename):
             archive_file(filename)
             extract_part_from_file(part_number_to_extract, filename)
         except IOError:
-            logging.warning("Could not open {} file".format(filename))
+            logging.warning("Could not open {0} file".format(filename))
     else:
-        logging.warning("File split process for {} not started".format(filename));
+        logging.warning("File split process for {0} not started".format(filename));
 
 
 def extract_part_from_file(part_number, filename):
@@ -75,7 +80,7 @@ def get_remote_machine_index():
     m = re.search(pattern, machine_name)
     if m:
         found = m.group(1)
-        logging.info("Identified remote machine number:{}".format(found))
+        logging.info("Identified remote machine number:{0}".format(found))
         return int(found)
     else:
         logging.warning("Could not identify remote machine number from given hostname: {} ".format(machine_name))
