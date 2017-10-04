@@ -17,6 +17,7 @@ class ProcessInputData(object):
         logging.basicConfig(format='%(asctime)s %(levelname)s: %(message)s', datefmt='%H:%M:%S', level=logging.INFO)
 
     def main(self):
+        logging.info("STARTED PROCESSING INPUT TEST DATA")
         with open(input_files_list) as input_files:
             files_to_process = json.load(input_files)
         for filename in files_to_process['files_to_shuffle']:
