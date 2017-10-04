@@ -28,9 +28,6 @@ class ProcessInputData(object):
             file_path = base_dir  + filename
             process_file_for_part_extraction(file_path)
 
-def normalize_path(filename):
-    return base_dir + base_dir
-
 def shuffle_lines_in_file(filename):
     try:
         archive_file(filename)
