@@ -94,6 +94,9 @@ def archive_file(filename):
         logging.info("Original file {0} was saved in {1}".format(filename , original_filename))
 
 def file_len(fname):
+    if os.stat(fname).st_size == 0:
+        logging.warning("{0} file is empty".format(fname))
+        return 0
     with open(fname) as f:
         for i, l in enumerate(f):
             pass
